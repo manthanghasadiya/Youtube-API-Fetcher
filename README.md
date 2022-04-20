@@ -7,6 +7,12 @@
 * A basic search API to search the stored videos using their title and description.
 * Add support for supplying multiple API keys so that if quota is exhausted on one, it automatically uses the next available key.
 
+## Screen recording
+* Screen recording of the projct 
+
+
+https://github.com/manthanghasadiya/Youtube-API-Fetcher/blob/main/Media/How%20to%20run%20server.webm
+
 ## How to run
 ```bash
 # Clone the Youtub-API-Feetcher repo with git
