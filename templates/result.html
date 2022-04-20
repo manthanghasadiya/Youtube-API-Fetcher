@@ -1,0 +1,136 @@
+ {% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search result</title>
+    <meta http-equiv="refresh" content="100">
+    <link href="{% static 'css/result.css' %}" rel="stylesheet" />
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+        integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<center><h1>Results for {{query}}</h1></center>
+
+<center><a href="search">Back to Search</a></center>
+
+    <form action="" method="get">
+      {% csrf_token %}
+      <div class="inner-form">
+        <div class="input-field second-wrap">
+          <input id="search" type="text" name="title_s" value="" placeholder="Title" />
+        </div>
+      </div>
+      <div class="inner-form">
+        <div class="input-field second-wrap">
+          <input id="search" type="text" name="description_s" value="" placeholder="Description" />
+        </div>
+        
+      </div>
+      <div class="inner-form">
+        <div class="input-field second-wrap">
+          <input id="search" type="text" name="channel_title_s" value="" placeholder="Channel_title" />
+        </div>
+        <div class="input-field third-wrap">
+          <button class="btn-search" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+
+
+  {% for obj in page_obj %}
+  <br><br>
+
+
+
+  <!--  code for video template  -->
+ 
+  <div class="container d-flex justify-content-center">
+      <div class="row">
+      <figure class="card card-product-grid card-lg">
+          <a href="#" class="img-wrap" data-abc="true">
+              <iframe height="1000" width="1450" src="https://www.youtube.com/embed/{{obj.video_id}}"
+                  allowfullscreen="allowfullscreen">
+              </iframe>
+          </a>
+
+          <figcaption class="info-wrap">
+              <div class="row">
+                  <div class="col-md-9 col-xs-9">
+                      <a href="#" class="title" data-abc="true">{{obj.title}}</a>
+                      <span class="rated">{{obj.description}}</span>
+                  </div>
+                  <div class="col-md-3 col-xs-3">
+                      <div class="rating text-right">
+                          <span class="rated">{{obj.publishedDateTime}}</span>
+                      </div>
+                  </div>
+              </div>
+          </figcaption>
+          <div class="bottom-wrap-payment">
+              <figcaption class="info-wrap">
+                  <div class="row">
+                      <div class="col-md-9 col-xs-9">
+                          <a href="#" class="title" data-abc="true">{{obj.channel_title}}</a>
+                      </div>
+                  </div>
+              </figcaption>
+          </div>
+          <div class="bottom-wrap"> <a href="https://www.youtube.com/embed/{{obj.video_id}}"
+                  class="btn btn-primary float-right" data-abc="true"> Watch Now </a>
+          </div>
+      </figure>
+
+  </div>
+
+</div>
+  {% endfor %}
+
+
+    
+    <!--  PAGINATION  -->
+
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1"> <button class="button button1">&laquo; First</button></a>
+            <a href="?page={{ page_obj.previous_page_number }}"><button class="button button1">Previous</button></a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"><button class="button button1">next</button></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"><button class="button button1">last
+                    &raquo;</button></a>
+            {% endif %}
+        </span>
+
+    </div>
+
+</body>
+
+</html>
