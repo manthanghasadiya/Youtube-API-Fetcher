@@ -8,10 +8,9 @@
 * Add support for supplying multiple API keys so that if quota is exhausted on one, it automatically uses the next available key.
 
 ## Screen recording
-* Screen recording of the projct 
+* Screen recording of the project 
 
-
-https://github.com/manthanghasadiya/Youtube-API-Fetcher/blob/main/Media/How%20to%20run%20server.webm
+[Video](https://github.com/manthanghasadiya/Youtube-API-Fetcher/blob/main/Media/How%20to%20run%20server.webm)
 
 ## How to run
 ```bash
