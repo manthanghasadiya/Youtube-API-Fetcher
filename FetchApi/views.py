@@ -10,7 +10,7 @@ from .filters import video_filter
 api_service_name = "youtube"
 api_version = "v3"
 # API key
-DEVELOPER_KEY = ["AIzaSyD-jKSFEX-7gUop4m1JVa4AXKy2-5GmZPU", "AIzaSyBrOKmIJyfA_3VTanJV5rongZFWwPG5WeM", "AIzaSyAbX1J6GWfg9A9Sx3BF4Fbu26_chktGkXM", "AIzaSyCvuHimzqmF7Jwb43JjjTSaP-1rL_T_pfs"]
+DEVELOPER_KEY = ["A list of YT API keys so if one expires it starts with other one."]
 
 
 # Create your views here.
